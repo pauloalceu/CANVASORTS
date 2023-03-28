@@ -1,0 +1,46 @@
+<!doctype html>  
+<html lang="en">  
+<head>  
+	<meta charset="utf-8">  
+	<title>CANVAS!</title>  
+
+<head>
+
+<link rel="stylesheet" media="all" href="style.css" />
+<body>  
+	<div id="container">
+		<h1>ORDENAÇÕES EM CANVAS!</h1>
+
+		<ul>
+			<li>
+				<span class="title">Bubble Sort</span>
+				<canvas id="canvas-bubble-sort" width="200px" height="200px"></canvas>
+				<p>
+					Bubble sort é um algoritmo de classificação simples. O algoritmo começa no início do conjunto de dados. Ele compara os dois primeiros elementos e, se o primeiro for maior que o segundo, os troca. Ele continua fazendo isso para cada par de elementos adjacentes até o final do conjunto de dados. Em seguida, começa novamente com os dois primeiros elementos, repetindo até que nenhuma troca tenha ocorrido na última passagem. O desempenho médio e de pior caso desse algoritmo é O(n2), por isso raramente é usado para classificar conjuntos de dados grandes e não ordenados.
+				</p>
+				<input type="button" value="Roda" id="btnBubbleSort">
+			</li>
+			<li>
+				<span class="title">Selection Sort</span>
+				<canvas id="canvas-selection-sort" width="200px" height="200px"></canvas>
+				<p>
+					A classificação por seleção é uma classificação de comparação no local. Ele tem complexidade O(n2), tornando-o ineficiente em listas grandes e geralmente tem desempenho pior do que classificação por inserção semelhante. A classificação por seleção é conhecida por sua simplicidade e também apresenta vantagens de desempenho em relação a algoritmos mais complicados em determinadas situações. O algoritmo encontra o valor mínimo, substitui-o pelo valor na primeira posição e repete essas etapas para o restante da lista. Ele não faz mais do que n trocas, por isso é útil quando a troca é muito cara.
+				</p>
+				<input type="button" value="Roda" id="btnSelectionSort">
+			</li>
+			<li>
+				<span class="title">Insertion Sort</span>
+				<canvas id="canvas-insert-sort" width="200px" height="200px"></canvas>
+				<p>
+					A classificação por inserção é um algoritmo de classificação simples que é relativamente eficiente para listas pequenas e principalmente para listas classificadas, e geralmente é usado como parte de algoritmos mais sofisticados. Funciona pegando elementos da lista um por um e inserindo-os em sua posição correta em uma nova lista ordenada. Em arrays, a nova lista e os elementos restantes podem compartilhar o espaço do array, mas a inserção é cara, exigindo o deslocamento de todos os elementos seguintes em um. Shell sort é uma variante da classificação por inserção que é mais eficiente para listas maiores.
+				</p>
+				<input type="button" value="Roda" id="btnInsertionSort">
+			</li>
+		</ul>
+	</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script type="text/javascript" src="script.js"></script>
+
+</body>  
+</html>  
