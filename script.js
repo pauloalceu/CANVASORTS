@@ -14,24 +14,24 @@
 			this.canvas.height 	= this.canvasHeight;
 
 			if(!this.canvas.getContext){
-				alert('Canvas not supported!');
+				alert('Canvas não suportada!!');
 				return;
 			}
 			this.context = this.canvas.getContext("2d");
 			this.context.lineWidth 		= 1;
 			this.context.strokeStyle 	= strokeStyle;
 
-			//initialize our array of values
+			//inicializar nosso array de valores
 			this.values = this.getValues(this.arraySize);
 		}
 
-		//initialize an array of N numbers
+		//inicializar uma matriz de N números
 		sort.prototype.getValues = function(numElements){
 			for (var a=[],i=0;i<numElements;++i) a[i]=i;
 			return this.shuffle(a);	
 		}
 
-		//randomize the values in the array
+		//randomizar os valores na matriz
 		sort.prototype.shuffle = function(array){
 			var tmp, current, top = array.length;
 			if(top) while(--top) {
@@ -43,14 +43,14 @@
 			return array;
 		}
 
-		//this function renders each value as a line
-		//we use the magnitude of the value at element N is used as the length of the line
-		//we use the index as the position of the line (all lines are veritcal)
+		//esta função renderiza cada valor como uma linha
+		//usamos a magnitude do valor no elemento N é usado como o comprimento da linha
+		//usamos o índice como a posição da linha (todas as linhas são verticais)
 		sort.prototype.draw = function(){
-			//clear canvas
+			//limpa canvas
 			this.context.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
 
-			//draw each of the values as a line 
+			//desenhe cada um dos valores como uma linha
 			for (var i = 0; i < this.values.length; i++) {
 				this.context.beginPath();
 				this.context.moveTo(0, i+0.5);
@@ -59,12 +59,12 @@
 			}
 		}
 
-		//sort the array of values, and each time a swap occurs, redraw the values on the canvas
-		//sort using a BUBBLE SORT algorithm
+		//classifique a matriz de valores e, sempre que ocorrer uma troca, redesenhe os valores na tela
+		//classificar usando um algoritmo BUBBLE SORT
 		sort.prototype.bubbleSort = function(){
 			var swapped = false;
 
-			//pass through the array and swap the first unordered value you find with its neighbour
+			//passe pelo array e troque o primeiro valor não ordenado que você encontrar com seu vizinho
 			sort.prototype.bubbleSortPass = function(i){
 				if (this.values[i] > this.values[i+1]) {
 					var temp 			= this.values[i];
@@ -76,12 +76,11 @@
 					this.draw();
 				}				
 
-				//save the context so that we can call the functions with setTimeout in the context of our object
+				//salve o contexto para que possamos chamar as funções com setTimeout no contexto do nosso objeto
 				var self = this;
 
-				//These are our "loop" conditionals
+				//Estas são as nossas condicionais de "loop"
 				if(i<this.values.length){
-					//if i<this.values.length, we are not yet at the end of our pass through the array (inner loop)
 					setTimeout(function(){self.bubbleSortPass(i+1);}, 5);
 				}else{
 					//if i=this.values.length then we have completed a pass through the array
@@ -130,29 +129,26 @@
 		//sort the array of values, and each time a swap occurs, redraw the values on the canvas
 		//fort using an INSERTION SORT algorithm
 		sort.prototype.insertionSort = function(){
-    		var len = this.values.length, i = -1, j, tmp;
+    		var len = this.values.length, x = -1, y, tmp;
  
 			while (len--) {
-				tmp = this.values[++i];
-				j = i;
+				tmp = this.values[++x];
+				y = x;
 
-				sort.prototype.insertionSortPass = function(j){
-					if(this.values[j]>tmp && j>=0){
-						this.values[j + 1] = this.values[j];
-						this.values[j] = tmp;
+				sort.prototype.insertionSortPass = function(y){
+					if(this.values[y]>tmp && y>=0){
+						this.values[y + 1] = this.values[y];
+						this.values[y] = tmp;
 
 						this.draw();
 
 						var self = this;
 						
-						//totally fucked - why doesn't this work???
-						//setTimeout(function(){self.insertionSortPass(j-1);},200);
-
-						//works, but UI is locked until the thread exits
-						self.insertionSortPass(j-1);
+						setTimeout(function(){self.insertionSort(y-1);},20);
 					}
 				}
-				this.insertionSortPass(j-1);
+				this.insertionSortPass(y-1);
+				
 			}
 		}
 
