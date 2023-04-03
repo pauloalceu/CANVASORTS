@@ -6,7 +6,7 @@
 			this.canvasHeight 	= canvasSize;
 
 			if(!document.getElementById(canvasId)){
-				alert('Canvas not found: ' + canvasId);
+				alert('Canvas nao encontrada: ' + canvasId);
 				return;
 			}
 			this.canvas = document.getElementById(canvasId);
@@ -14,7 +14,7 @@
 			this.canvas.height 	= this.canvasHeight;
 
 			if(!this.canvas.getContext){
-				alert('Canvas não suportada!!');
+				alert('Canvas nao suportada!!');
 				return;
 			}
 			this.context = this.canvas.getContext("2d");
@@ -83,10 +83,10 @@
 				if(i<this.values.length){
 					setTimeout(function(){self.bubbleSortPass(i+1);}, 5);
 				}else{
-					//if i=this.values.length then we have completed a pass through the array
-					//we check if any values were swapped during the last pass
-					//if no, the array is sorted
-					//if yes, then we need to do another pass
+					//se i=this.values.length então completamos uma passagem pelo array
+					//verificamos se algum valor foi trocado durante a última passagem
+					//se não, a matriz é classificada
+					//se sim, então precisamos fazer outra passagem
 					if(swapped){setTimeout(function(){self.bubbleSort();}, 5);}
 				}				
 			}
@@ -94,22 +94,22 @@
 			this.bubbleSortPass(0);
 		}
 
-		//sort the array of values, and each time a swap occurs, redraw the values on the canvas
+		//classifique a matriz de valores e, sempre que ocorrer uma troca, redesenhe os valores nacanvas
 		//sort using a SELECTION SORT algorithm
 		sort.prototype.selectionSort = function(i){
-			// current smallest value in the array
+			// menor valor atual na matriz
 			var smallestValueIndex = i;
 
-			// check against all other values
+			// verificar todos os outros valores
 			for (var k = i+1; k < this.arraySize; k++) {
 
-				// new small value, reference its position
+				// novo valor pequeno, referencie sua posição
 				if (compare( this.values[k], this.values[smallestValueIndex]) === true) {
 					smallestValueIndex = k;
 				}
 			}
 
-			// a new smallest value was assigned, perform a swap !
+			// um novo valor menor foi econtrado, execute uma troca!
 			if (smallestValueIndex !== i) {
 				var tmp 		= this.values[i];
 				this.values[i] 	= this.values[smallestValueIndex];
@@ -126,8 +126,8 @@
 			if(i<this.arraySize){setTimeout(function(){self.selectionSort(i+1);}, 5);}	
 		}
 
-		//sort the array of values, and each time a swap occurs, redraw the values on the canvas
-		//fort using an INSERTION SORT algorithm
+		//classifique a matriz de valores e, sempre que ocorrer uma troca, redesenhe os valores no CANVAS
+		//classificando usando um algoritmo INSERTION SORT
 		sort.prototype.insertionSort = function(){
     		var len = this.values.length, x = -1, y, tmp;
  
